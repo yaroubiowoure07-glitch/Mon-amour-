@@ -45,6 +45,10 @@
       position: relative;
     }
 
+    .message p {
+      margin-bottom: 15px;
+    }
+
     .je-taime {
       animation: heartbeat 1s infinite;
       color: #ff3366;
@@ -108,13 +112,19 @@
   <h1>Pour Bella ❤️</h1>
 
   <div class="message">
-    Bella… La première fois que nos regards se sont croisés, j’ai senti le monde ralentir, comme si tout autour de nous disparaissait. 
-      J’ai longtemps hésité à te parler, par peur que mes mots ne soient pas assez grands pour contenir ce que je ressentais. 
-      Mais aujourd’hui, je n’ai plus peur : <span class="jeTaime">je t’aime Bella</span>, <span class="jeTaime">je t’aime Bella</span>, <span class="jeTaime">je t’aime Bella</span>… et je t’aimerai encore demain, et tous les jours qui suivront. ❤️
+    <p>
+      Bella… La première fois que nos regards se sont croisés, j’ai senti le monde ralentir, comme si tout autour de nous disparaissait.
+      J’ai longtemps hésité à te parler, par peur que mes mots ne soient pas assez grands pour contenir ce que je ressentais.
+      Mais aujourd’hui, je n’ai plus peur :
+      <span class="je-taime">je t’aime Bella</span>,
+      <span class="je-taime">je t’aime Bella</span>,
+      <span class="je-taime">je t’aime Bella</span>… et je t’aimerai encore demain, et tous les jours qui suivront. ❤️
     </p>
     <p>
-      Et même si je ne te l’ai pas dit l’autre soir dans les escaliers… <span class="jeTaime">je t’aime, Bella</span>. 
+      Et même si je ne te l’ai pas dit l’autre soir dans les escaliers…
+      <span class="je-taime">je t’aime, Bella</span>.
       Alors je te le demande aujourd’hui, simplement, sincèrement : veux-tu être ma petite amie ? 💖
+    </p>
   </div>
 
   <div class="je-taime">Je t’aime Bella</div>
@@ -128,6 +138,7 @@
   </audio>
 
   <script>
+    // Pétales et cœurs qui tombent
     for (let i = 0; i < 30; i++) {
       let el = document.createElement('div');
       el.className = 'falling';
@@ -136,6 +147,20 @@
       el.style.animationDelay = Math.random() * 10 + 's';
       document.body.appendChild(el);
     }
+
+    // Fondu progressif de la musique
+    const music = document.getElementById('romanticMusic');
+    music.volume = 0;
+    music.play();
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 1) {
+        vol += 0.01;
+        music.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
   </script>
 
 </body>
